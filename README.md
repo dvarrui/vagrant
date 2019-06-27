@@ -1,2 +1,7 @@
-# vagrant
-Vagrantfiles for Teuton hosts
+# Vagrantfiles for Teuton Software
+
+This repository contains several Vagrantfiles used to build hosts with:
+* Teuton Software (t-node)
+* Teuton Software (s-node)
+* Teuton Software (t-node + panel)
+* Teuton Software (s-node + panel)
