@@ -1,0 +1,21 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.define "teuton-panel-debian" do |i|
+    i.vm.box = "debian/stretch64"
+    i.vm.hostname = "panel"
+    i.vm.network "public_network"
+#    i.vm.network :forwarded_port, guest: 22, host: 1600
+
+    i.vm.provision "shell", inline: <<-SHELL
+    apt install -y xfce4
+    wget -qO- https://github.com/teuton-software/teuton-panel/releases/download/v0.0.2-alpha/teuton-panel_0.0.2.deb
+    dpkg -i teuton-panel_0.0.2.deb
+  SHELL
+    i.vm.provider "virtualbox" do |v|
+      v.name = 'teuton-panel-debian'
+      v.memory = 2048
+    end
+  end
+end
