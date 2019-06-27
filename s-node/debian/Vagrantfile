@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.define "teuton-s-debian" do |i|
+  config.vm.define "teuton-s-node-debian" do |i|
     i.vm.box = "debian/stretch64"
     i.vm.hostname = "s-node"
     i.vm.network "public_network"
@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
     wget -qO- https://raw.githubusercontent.com/dvarrui/teuton/master/bin/linux_s-node_install.sh | bash
   SHELL
     i.vm.provider "virtualbox" do |v|
-      v.name = "teuton-s-debian"
+      v.name = "teuton-s-node-debian"
       v.memory = 2048
     end
   end
