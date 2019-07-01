@@ -5,15 +5,20 @@ Vagrant.configure("2") do |config|
   config.vm.define "teuton-s-node-ubuntu" do |i|
     i.vm.box = "ubuntu/bionic64"
     i.vm.hostname = "s-node"
-    i.vm.network "public_network"
+    i.vm.network "public_network", bridge: [
+      "enp2s0",
+      "wlp1s0",
+    ]
+
     i.vm.network :forwarded_port, guest: 80, host: 8081
     i.vm.provision "shell", inline: <<-SHELL
+      apt update
       apt install -y xfce4
       wget https://github.com/teuton-software/teuton-panel/releases/download/v0.0.2-alpha/teuton-panel_0.0.2.deb
       dpkg -i teuton-panel_0.0.2.deb
     SHELL
     i.vm.provider "virtualbox" do |v|
-      v.name = "teuton-s-node-ubuntu"
+      v.name = "teuton-panel-ubuntu"
       v.memory = 2048
     end
   end

@@ -5,7 +5,7 @@ group "Opensuse (t-node)" do
 
   dir = "t-node/opensuse"
 
-  #goto :localhost, :exec => "sh -c \"cd #{dir} && vagrant up\""
+  goto :localhost, :exec => "sh -c \"cd #{dir} && vagrant up\""
 
   target "vagrant status"
   goto :localhost, :exec => "sh -c \"cd #{dir} && vagrant status\""
