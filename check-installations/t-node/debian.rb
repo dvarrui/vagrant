@@ -1,7 +1,7 @@
 
 group "Debian (t-node)" do
 
-  log "Be patient..."
+  log "[UNFO] Be patient..."
 
   dir = "t-node/debian"
 

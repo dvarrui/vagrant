@@ -1,8 +1,6 @@
 
-require_relative 'panel/debian'
-
-#require_relative 'opensuse'
-#require_relative 'debian'
+#require_relative 'panel/debian'
+require_relative 't-node/opensuse'
 
 play do
   show
