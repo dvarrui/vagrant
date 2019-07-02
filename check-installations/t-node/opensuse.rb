@@ -1,11 +1,9 @@
 
 group "T-NODE: Opensuse" do
 
-  log "[INFO] Be patient..."
+  puts "[T-NODE] OpenSUSE begining..."
 
   dir = "t-node/opensuse"
-
-  log "[INFO] vagrant up..."
   goto :localhost, :exec => "cd #{dir} && vagrant up"
 
   target "vagrant status"
@@ -20,7 +18,7 @@ group "T-NODE: Opensuse" do
   goto :localhost, :exec => "cd #{dir} && vagrant ssh -c \"teuton version\""
   expect [ "teuton", "2.0" ]
 
-  log "[INFO] vagrant halt and detroy..."
   goto :localhost, :exec => "cd #{dir} && vagrant halt"
   goto :localhost, :exec => "cd #{dir} && vagrant destroy --force"
+  puts "[T-NODE] OpenSUSE finish!"
 end

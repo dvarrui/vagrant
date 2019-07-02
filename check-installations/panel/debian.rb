@@ -1,10 +1,9 @@
 
 group "PANEL: Debian" do
 
-  puts "[INFO] Be patient..."
-  dir = "panel/debian"
+  puts "[PANEL] Debian => vagrant up..."
 
-  puts "[INFO] vagrant up..."
+  dir = "panel/debian"
   goto :localhost, :exec => "cd #{dir} && vagrant up"
 
   target "vagrant status"
