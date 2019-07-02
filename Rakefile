@@ -7,6 +7,5 @@ end
 
 desc 'Check installation'
 task :check do
-  puts "Checking..."
+  system("teuton check-installations")
 end
-

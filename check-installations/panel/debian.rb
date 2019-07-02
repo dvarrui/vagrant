@@ -1,13 +1,14 @@
 
 group "PANEL: Debian" do
 
-  log "Be patient..."
+  puts "[INFO] Be patient..."
   dir = "panel/debian"
 
-  goto :localhost, :exec => "sh -c \"cd #{dir} && vagrant up\""
+  puts "[INFO] vagrant up..."
+  goto :localhost, :exec => "cd #{dir} && vagrant up"
 
   target "vagrant status"
-  goto :localhost, :exec => "sh -c \"cd #{dir} && vagrant status\""
+  goto :localhost, :exec => "cd #{dir} && vagrant status"
   expect [ "teuton-panel-debian", "running" ]
 
   target "uname -a"
@@ -22,6 +23,6 @@ group "PANEL: Debian" do
   goto :localhost, :exec => "cd #{dir} && vagrant ssh -c \"vdir /opt\""
   expect "teuton-panel"
 
-  goto :localhost, :exec => "sh -c \"cd #{dir} && vagrant halt\""
-  goto :localhost, :exec => "sh -c \"cd #{dir} && vagrant destroy\""
+  goto :localhost, :exec => "cd #{dir} && vagrant halt"
+  goto :localhost, :exec => "cd #{dir} && vagrant destroy --force"
 end
