@@ -12,10 +12,15 @@ end
 
 desc 'Check panel installation'
 task :panel do
-  system("teuton check-installations/panel.rb")
+  system("teuton test/panel.rb")
 end
 
-desc 'Check tnode installation'
+desc 'Check t-node installation'
 task :tnode do
-  system("teuton check-installations/t-node.rb")
+  system("teuton test/t-node.rb")
+end
+
+desc 'Check s-node installation'
+task :tnode do
+  system("teuton test/s-node.rb")
 end
