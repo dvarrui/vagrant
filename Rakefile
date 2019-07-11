@@ -1,7 +1,7 @@
 # File: Rakefile
 # Usage: rake
 
-desc 'Default'
+desc 'Default: show help'
 task default: :help do
 end
 

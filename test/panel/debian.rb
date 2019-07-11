@@ -1,7 +1,7 @@
 
 group "PANEL: Debian" do
 
-  puts "[PANEL] Debian => vagrant up..."
+  puts "[PANEL] Debian..."
 
   dir = "panel/debian"
   goto :localhost, :exec => "cd #{dir} && vagrant up"

@@ -1,7 +1,7 @@
 
 group "T-NODE: Debian" do
 
-  puts "[T-NODE] Debian begining..."
+  puts "[T-NODE] Debian..."
 
   dir = "t-node/debian"
   goto :localhost, :exec => "cd #{dir} && vagrant up"
@@ -20,6 +20,4 @@ group "T-NODE: Debian" do
 
   goto :localhost, :exec => "cd #{dir} && vagrant halt"
   goto :localhost, :exec => "cd #{dir} && vagrant destroy --force"
-  puts "[T-NODE] Debian finish!"
-
 end

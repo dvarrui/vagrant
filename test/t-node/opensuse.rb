@@ -1,7 +1,7 @@
 
 group "T-NODE: Opensuse" do
 
-  puts "[T-NODE] OpenSUSE begining..."
+  puts "[T-NODE] OpenSUSE..."
 
   dir = "t-node/opensuse"
   goto :localhost, :exec => "cd #{dir} && vagrant up"
@@ -20,5 +20,4 @@ group "T-NODE: Opensuse" do
 
   goto :localhost, :exec => "cd #{dir} && vagrant halt"
   goto :localhost, :exec => "cd #{dir} && vagrant destroy --force"
-  puts "[T-NODE] OpenSUSE finish!"
 end
