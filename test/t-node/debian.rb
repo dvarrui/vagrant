@@ -7,7 +7,7 @@ group "T-NODE: Debian" do
   goto :localhost, :exec => "cd #{dir} && vagrant up"
 
   target "vagrant status"
-  goto :localhost, :exec => "sh -c \"cd #{dir} && vagrant status\""
+  goto :localhost, :exec => "cd #{dir} && vagrant status"
   expect [ "teuton-t-node-debian", "running" ]
 
   target "uname -a"
