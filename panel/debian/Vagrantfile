@@ -13,8 +13,8 @@ Vagrant.configure("2") do |config|
     i.vm.provision "shell", inline: <<-SHELL
     apt update
     apt install -y xfce4
-    wget https://github.com/teuton-software/teuton-panel/releases/download/v0.0.2-alpha/teuton-panel_0.0.2.deb
-    dpkg -i teuton-panel_0.0.2.deb
+    wget https://github.com/teuton-software/teuton-panel/releases/download/v0.0.2-alpha/teuton-panel.deb
+    dpkg -i teuton-panel.deb
   SHELL
     i.vm.provider "virtualbox" do |v|
       v.name = 'teuton-panel-debian'
