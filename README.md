@@ -6,4 +6,4 @@ This repository contains several Vagrantfiles used to build hosts with:
 * S-NODE: Build VM with SSH service installed.
 * PANEL: Build VM with teuton panel installed.
 
-> There are Vagrant boxes at https://vagrantcloud.com/ or https://app.vagrantup.com/boxes/
+> If you plan build your own Vagranfiles for other OS, you will find more Vagrant boxes at https://vagrantcloud.com/ or https://app.vagrantup.com/boxes/
