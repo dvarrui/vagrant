@@ -1,17 +1,21 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+NAME = "teuton-s-node-debian"
+BOX = "generic/debian11"
+HOSTNAME = "snode-debian"
+
 Vagrant.configure("2") do |config|
-  config.vm.define "teuton-s-node-debian" do |i|
-    i.vm.box = "generic/debian9"
-    i.vm.hostname = "s-node"
+  config.vm.define NAME do |i|
+    i.vm.box = BOX
+    i.vm.hostname = HOSTANME
     i.vm.network "public_network"
-    i.vm.network :forwarded_port, guest: 80, host: 8081
+    i.vm.network :forwarded_port, guest: 22, host: 2241
     i.vm.provision "shell", inline: <<-SHELL
     wget -qO- https://raw.githubusercontent.com/dvarrui/teuton/master/bin/linux_s-node_install.sh | bash
   SHELL
     i.vm.provider "virtualbox" do |v|
-      v.name = "teuton-s-node-debian"
+      v.name = NAME
       v.memory = 2048
     end
   end
