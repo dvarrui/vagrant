@@ -1,20 +1,21 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.configure("2") do |config|
-  config.vm.define "teuton-t-node-opensuse" do |i|
-    i.vm.box = "generic/opensuse15"
-    i.vm.hostname = "t-node"
-    i.vm.network "public_network", bridge: [
-      "enp2s0",
-      "wlp1s0",
-    ]
+NAMES = [ "generic/opensuse15", "opensuse/Leap-15.3.x86_64" ]
+BOX = NAMES[0]
+HOSTNAME = "t-node"
+VBNAME = "#{BOX.gsub("/", "_")}_#{HOSTNAME}" 
 
-    i.vm.provision "shell", inline: <<-SHELL
-    wget -qO- https://raw.githubusercontent.com/dvarrui/teuton/master/bin/linux_t-node_install.sh | bash
-  SHELL
+Vagrant.configure("2") do |config|
+  config.vm.define VBNAME do |i|
+    i.vm.box = BOX
+    i.vm.hostname = HOSTNAME
+    i.vm.network "public_network", bridge: [ "wlp6s0" ]
+
+    # i.vm.provision "shell", path: "install.sh"
+    i.vm.provision "shell", inline: "gem install teuton"
     i.vm.provider "virtualbox" do |v|
-      v.name = 'teuton-t-node-opensuse'
+      v.name = VBNAME
       v.memory = 2048
     end
   end
