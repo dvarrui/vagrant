@@ -1,0 +1,1 @@
+generic/ubuntu2204

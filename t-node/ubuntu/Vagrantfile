@@ -1,18 +1,26 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-BOX = "generic/ubuntu2204"
-HOSTNAME = "t-node"
-VBNAME = "#{BOX.gsub("/", "_")}_#{HOSTNAME}"
-
 Vagrant.configure("2") do |config|
+  config.trigger.before :up do |trigger|
+    trigger.name = "BOXNAME"
+    BOXNAME = File.read("boxname.txt").chop
+    HOSTNAME = "t-node"
+    VBNAME = "#{BOXNAME.gsub("/", "_")}_#{HOSTNAME}"
+    trigger.info = "BOXNAME='#{BOXNAME}'"
+  end
+
   config.vm.define VBNAME do |i|
-    i.vm.box = BOX
+    i.vm.box = BOXNAME
     i.vm.hostname = HOSTNAME
     i.vm.network "public_network", bridge: [ "wlp6s0" ]
 
     # i.vm.provision "shell", path: "install.sh"
-    i.vm.provision "shell", inline: "gem install teuton"
+    i.vm.provision "shell", inline: <<-SHELL
+    apt update
+    apt install -y ruby
+    gem instal teuton
+  SHELL
     i.vm.provider "virtualbox" do |v|
       v.name = VBNAME
       v.memory = 2048
