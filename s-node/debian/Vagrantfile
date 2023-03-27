@@ -8,7 +8,7 @@ HOSTNAME = "snode-debian"
 Vagrant.configure("2") do |config|
   config.vm.define NAME do |i|
     i.vm.box = BOX
-    i.vm.hostname = HOSTANME
+    i.vm.hostname = HOSTNAME
     i.vm.network "public_network"
     i.vm.network :forwarded_port, guest: 22, host: 2241
     i.vm.provision "shell", inline: <<-SHELL
